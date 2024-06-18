@@ -346,7 +346,7 @@ public with sharing class TriggerTest {
     */
     @IsTest
     static void testOpportunityTrigger_setPrimaryContact() {
-        // Prepare the test data
+        // Prepare the test data 
         List<Account> accountsToInsert = new List<Account>();
         for (Integer i = 0; i < 10; i++) {
             Account testAccount = new Account(Name = 'Test Account ' + i);
