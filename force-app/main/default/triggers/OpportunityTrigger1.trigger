@@ -1,4 +1,5 @@
 trigger OpportunityTrigger1 on Opportunity (before update, after update, before delete, after delete) {
+   // Author: Flora Lopez
     if(Trigger.isBefore && Trigger.isUpdate) {
         for(Opportunity opp : Trigger.new) {
             if (opp.Amount < 5000) {

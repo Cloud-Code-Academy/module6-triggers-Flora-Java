@@ -1,5 +1,6 @@
-trigger AccountTrigger1 on Account (before insert) {
-	if(Trigger.isBefore) {
+trigger AccountTrigger1 on Account (before insert, after insert) {
+  // Author: Flora Lopez
+    if(Trigger.isBefore) {
         if(Trigger.isInsert) {
             for(Account acct :Trigger.new) {
                 if (!String.isBlank(acct.Phone) &&
@@ -16,19 +17,12 @@ trigger AccountTrigger1 on Account (before insert) {
                    !String.isBlank(acct.ShippingPostalCode) &&
                    !String.isBlank(acct.ShippingCountry)) {
                     String streetacc = acct.ShippingStreet;
-                    System.debug('street::: ' +  acct.ShippingStreet);
-                    System.debug('address::: ' +  acct.ShippingAddress);
                 	acct.BillingStreet = acct.ShippingStreet;
                     acct.BillingCity = acct.ShippingCity;
                     acct.BillingState = acct.ShippingState;
                     acct.BillingPostalCode = acct.ShippingPostalCode;
                     acct.BillingCountry = acct.ShippingCountry;
                 }
-                Contact newContact = new Contact(
-                    LastName = 'DefaultContact',
-                    Email = 'default@email.com'    
-                    );
-                
             }
         }
     }
